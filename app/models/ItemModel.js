@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const itemSchema = new mongoose.Schema({
+const ItemSchema = new mongoose.Schema({
   category: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
@@ -29,10 +29,10 @@ const itemSchema = new mongoose.Schema({
   }
 )
 
-itemSchema.virtual('url').get(function() {
+ItemSchema.virtual('url').get(function() {
   return `/inventory/items/${this._id}`;
 })
 
-const Item = mongoose.model('Vote', itemSchema);
+const Item = mongoose.model('Item', ItemSchema);
 
 module.exports = Item;
