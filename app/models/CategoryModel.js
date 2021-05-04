@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const categorySchema = new mongoose.Schema({
+const CategorySchema = new mongoose.Schema({
   description: {
     type: String,
     required: true,
@@ -14,10 +14,10 @@ const categorySchema = new mongoose.Schema({
   }
 )
 
-categorySchema.virtual('url').get(function() {
+CategorySchema.virtual('url').get(function() {
   return `/categories/category/${this._id}`;
 })
 
-const Item = mongoose.model('Vote', categorySchema);
+const Category = mongoose.model('Category', CategorySchema);
 
-module.exports = Item;
+module.exports = Category;
