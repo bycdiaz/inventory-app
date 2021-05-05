@@ -1,14 +1,16 @@
 require('dotenv').config();
 
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-// mongoose.connect(process.env.DB_URI,
-//   {
-//     useNewUrlParser: true,
-//     useCreateIndex: true,
-//     useUnifiedTopology: true
-//   }
-// );
+mongoose.connect(process.env.DB_URI,
+  {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true
+  }
+);
+
+require('./app/models');
 
 const app = require('./app/app');
 
