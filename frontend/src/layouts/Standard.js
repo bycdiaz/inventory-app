@@ -22,6 +22,7 @@ function PageWrapper(props) {
     <PageStyle>
       <div className='content'>
         <Header title={props.title}/>
+        {props.children}
         <Footer className='footer' />
       </div>
     </PageStyle>
