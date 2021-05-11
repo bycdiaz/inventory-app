@@ -1,5 +1,6 @@
 import React from "react";
 import Styled from "styled-components";
+import { Link } from "react-router-dom";
 
 import StandardLayout from "../layouts/Standard";
 
@@ -13,7 +14,12 @@ function Landing() {
   return (
     <StandardLayout title={"Inventory App"}>
       <LandingContent>
-        <h1>Landing Content</h1>
+        <Link to="/categories">
+          <button>All Categories</button>   
+        </Link>
+        <Link to="/items">
+          <button>All Items</button>
+        </Link>
       </LandingContent>
     </StandardLayout>
   )
