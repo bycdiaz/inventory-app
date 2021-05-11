@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Styled from "styled-components";
 
 // import Category from "../components/Category";
@@ -10,23 +10,35 @@ const CategoriesContent = Styled.div`
 `
 
 function Categories() {
+  const [categories, setCategories] = useState([]);
   
   async function getCategories() {
     const response = await fetch("http://localhost:3000/categories");
-    
-    console.log(response);
-    const data = await response.json();
-    console.log(data);
+    const categories = await response.json();
+
+    return setCategories(categories);;
   }
 
     useEffect(() => {
       getCategories();
-      // TODO Add returned categories to state.
     }, []);
+
+  const AllCategories = () => {
+    if (categories) {
+      return (
+        <ul>
+          { categories.map(category => {
+              return <li key={category._id}>{category.name}</li>
+            })
+          }
+        </ul>
+      )
+    }
+  }
 
   return (
     <CategoriesContent>
-        <p>test</p>
+        <AllCategories />
     </CategoriesContent>
   )
 }
