@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from "react";
 import Styled from "styled-components";
 
-// import Category from "../components/Category";
+import Category from "../components/Category";
 
 const CategoriesContent = Styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+
+  .container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+  }
 `
 
 function Categories() {
@@ -23,12 +29,17 @@ function Categories() {
       getCategories();
     }, []);
 
-  const AllCategories = () => {
+  const CategoryCards = () => {
     if (categories) {
       return (
-        <ul>
-          { categories.map(category => {
-              return <li key={category._id}>{category.name}</li>
+        <ul className="container">
+          {
+          categories.map(({ _id, name, description }) => {
+            return (
+              <li key={_id}>
+                <Category name={name} description={description} />
+              </li>
+            )
             })
           }
         </ul>
@@ -38,7 +49,7 @@ function Categories() {
 
   return (
     <CategoriesContent>
-        <AllCategories />
+      <CategoryCards />
     </CategoriesContent>
   )
 }
