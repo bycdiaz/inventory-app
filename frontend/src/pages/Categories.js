@@ -26,7 +26,13 @@ function Categories() {
   }
 
     useEffect(() => {
-      getCategories();
+      let isMounted = true;
+
+      if (isMounted) getCategories();
+
+      return () => {
+        isMounted = false;
+      }
     }, []);
 
   const CategoryCards = () => {
