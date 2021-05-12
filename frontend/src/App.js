@@ -4,17 +4,17 @@ import { Switch, Route } from "react-router-dom";
 import StandardLayout from "./layouts/Standard";
 import Landing from "./pages/Landing";
 import Categories from "./pages/Categories";
-import Items from "./pages/Items";
+import CategoryItems from "./pages/CategoryItems";
 
 function App() {
   return (
     <StandardLayout title={"Inventory App"}>
       <Switch>
+        <Route path="/categories/:category">
+          <CategoryItems />
+        </Route>
         <Route path="/categories">
           <Categories />
-        </Route>
-        <Route path="/items">
-          <Items />
         </Route>
         <Route path="/">
           <Landing />
