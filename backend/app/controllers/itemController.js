@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Category = mongoose.model("Item");
+const Item = mongoose.model("Item");
 
 exports.byCategory = async (req, res, next) => {
   try {
@@ -7,6 +7,15 @@ exports.byCategory = async (req, res, next) => {
     // find by category ID
     // const categories = await Category.find();
     // return res.json(categories);
+  } catch (error) {
+    next(error);
+  }
+}
+
+exports.allItems = async (req, res, next) => {
+  try {
+    const items = await Item.find();
+    return res.json(items);
   } catch (error) {
     next(error);
   }
