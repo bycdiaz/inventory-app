@@ -1,22 +1,18 @@
 import React from "react";
 import Styled from "styled-components";
-import { Link } from "react-router-dom";
 
 const LandingContent = Styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+  font-size: 20pt;
 `
 
 function Landing() {
-  return (    
+  return (
     <LandingContent>
-      <Link to="/categories">
-        <button>All Categories</button>   
-      </Link>
-      <Link to="/items">
-        <button>All Items</button>
-      </Link>
+      Choose an action above.
     </LandingContent>
   )
 }
