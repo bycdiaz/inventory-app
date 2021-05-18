@@ -1,8 +1,18 @@
 import React, { useState, useEffect } from "react";
 import Styled from "styled-components";
+import { Link } from "react-router-dom";
 
-const AllitemsContainer = Styled.div`
+const AllitemsStyles = Styled.div`
+  .item {
+    border: solid black 1px;
+    min-width: 300px;
+    height: auto;
+  }
 
+  .items-container {
+    display: flex;
+    flex-flow: row wrap;
+  }
 `
 
 function AllItems() {  
@@ -27,18 +37,29 @@ function AllItems() {
 
   function Items() {
     return (
-      <ul>
-        {items.map(item => {
-          return <li key={item._id}>{item.name}</li>
-        })}
-      </ul>
+      
+        <ul className='items-container'>
+          {items.map(item => {
+            return (
+              <Link to={`/${item.name.toLowerCase().split(' ').join('-')}`}>
+                <li className='item' key={item._id}>
+                  <div>
+                    <p>Name: {item.name}</p>
+                    <p>Description: {item.description}</p>
+                  </div>
+                </li>
+              </Link>
+            )
+          })}
+        </ul>
     )
   }
-  
+
   return (
-    <AllitemsContainer>
+    <AllitemsStyles>
+      <h2>Click item for more details or to edit.</h2>
       <Items />
-    </AllitemsContainer>
+    </AllitemsStyles>
   )
 }
 
