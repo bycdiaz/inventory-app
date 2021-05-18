@@ -2,9 +2,10 @@ const express = require('express');
 const router = express.Router();
 
 const categoryRoutes = require("./categoryRoutes");
-const itemRoutes = require('./categoryRoutes');
+const itemRoutes = require('./itemRoutes');
 
 router.use('/categories', categoryRoutes);
-router.use('/categories/items', itemRoutes);
+// router.use('/categories/items', itemRoutes);
+router.use('/allitems', itemRoutes);
 
 module.exports = router;
