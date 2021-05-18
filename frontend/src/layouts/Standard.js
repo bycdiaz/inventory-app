@@ -8,23 +8,27 @@ const PageStyle = Styled.div`
   flex-direction: column;
   justify-content: center;
 
+  /* .header {
+    flex-grow: 1
+  }
+
   .content {
-    flex: 1 0 auto;
+    flex-grow: 2
   }
 
   .footer {
-    flex-shrink: 0;
-  }
+    flex-grow: 1
+  } */
 `
 
 function PageWrapper(props) {
   return (
     <PageStyle>
+      <Header className='header' title={props.title}/>
       <div className='content'>
-        <Header title={props.title}/>
         {props.children}
-        <Footer className='footer' />
       </div>
+      <Footer className='footer' />
     </PageStyle>
   )
 }
