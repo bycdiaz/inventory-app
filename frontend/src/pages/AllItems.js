@@ -41,8 +41,8 @@ function AllItems() {
         <ul className='items-container'>
           {items.map(item => {
             return (
-              <Link to={`/${item.name.toLowerCase().split(' ').join('-')}`}>
-                <li className='item' key={item._id}>
+              <Link key={item._id} to={`/${item._id}`}>
+                <li className='item'>
                   <div>
                     <p>Name: {item.name}</p>
                     <p>Description: {item.description}</p>
