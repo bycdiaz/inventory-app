@@ -36,21 +36,19 @@ function Categories() {
     }, []);
 
   const CategoryCards = () => {
-    if (categories) {
-      return (
-        <ul className="container">
-          {
-          categories.map(({ _id, name, description }) => {
-            return (
-              <li key={_id}>
-                <Category name={name} description={description} />
-              </li>
-            )
-            })
-          }
-        </ul>
-      )
-    }
+    return (
+      <ul className="container">
+        {
+        categories.map(({ _id, name, description }) => {
+          return (
+            <li key={_id}>
+              <Category name={name} description={description} />
+            </li>
+          )
+          })
+        }
+      </ul>
+    )
   }
 
   return (
