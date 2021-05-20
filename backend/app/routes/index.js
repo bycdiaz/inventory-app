@@ -6,6 +6,6 @@ const itemRoutes = require('./itemRoutes');
 
 router.use('/categories', categoryRoutes);
 // router.use('/categories/items', itemRoutes);
-router.use('/allitems', itemRoutes);
+router.use('/items', itemRoutes);
 
 module.exports = router;
