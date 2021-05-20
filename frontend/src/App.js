@@ -11,7 +11,7 @@ function App() {
   return (
     <StandardLayout title={'Inventory App'}>
       <Switch>
-        <Route path='/allitems'>
+        <Route path='/items'>
             <AllItems />
         </Route>
         <Route path='/categories/:category'>
