@@ -22,7 +22,7 @@ function Nav() {
       <Link to="/categories">
         <button>All Categories</button>   
       </Link>
-      <Link to="/allitems">
+      <Link to="/items">
         <button>All Items</button>
       </Link>
       </div>
