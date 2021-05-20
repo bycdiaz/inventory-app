@@ -11,7 +11,7 @@ function AllItems() {
   const [items, setItems] = useState([]);
   
   async function getAllItems() {
-    const response = await fetch('http://localhost:3000/allitems');
+    const response = await fetch('http://localhost:3000/items');
     const items = await response.json();
 
     return setItems(items);;
