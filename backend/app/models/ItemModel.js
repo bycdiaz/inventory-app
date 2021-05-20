@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Category = mongoose.model('Category');
 
 const ItemSchema = new mongoose.Schema({
   category: {
@@ -32,6 +33,12 @@ const ItemSchema = new mongoose.Schema({
 ItemSchema.virtual('url').get(function() {
   return `/inventory/items/${this._id}`;
 })
+
+ItemSchema.statics.getCategoryName = async function(id) {
+  const [ category ] = await Category.find({ _id: id });
+
+  return category.name;
+}
 
 const Item = mongoose.model('Item', ItemSchema);
 
