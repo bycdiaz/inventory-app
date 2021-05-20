@@ -1,25 +1,17 @@
-import React, { useState, useEffect } from "react";
-import Styled from "styled-components";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import Styled from 'styled-components';
+
+import ItemCard from '../components/ItemCard';
 
 const AllitemsStyles = Styled.div`
-  .item {
-    border: solid black 1px;
-    min-width: 300px;
-    height: auto;
-  }
 
-  .items-container {
-    display: flex;
-    flex-flow: row wrap;
-  }
 `
 
 function AllItems() {  
   const [items, setItems] = useState([]);
   
   async function getAllItems() {
-    const response = await fetch("http://localhost:3000/allitems");
+    const response = await fetch('http://localhost:3000/allitems');
     const items = await response.json();
 
     return setItems(items);;
@@ -37,21 +29,9 @@ function AllItems() {
 
   function Items() {
     return (
-      
-        <ul className='items-container'>
-          {items.map(item => {
-            return (
-              <Link key={item._id} to={`/${item._id}`}>
-                <li className='item'>
-                  <div>
-                    <p>Name: {item.name}</p>
-                    <p>Description: {item.description}</p>
-                  </div>
-                </li>
-              </Link>
-            )
-          })}
-        </ul>
+      <ul className='items-container'>
+        { items.map(item =>  <li key={item._id}> <ItemCard item={item} /> </li>) }
+      </ul>
     )
   }
 
