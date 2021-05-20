@@ -6,11 +6,15 @@ import Landing from './pages/Landing';
 import Categories from './pages/Categories';
 import CategoryItems from './pages/CategoryItems';
 import AllItems from './pages/AllItems';
+import Item from './pages/Item';
 
 function App() {
   return (
     <StandardLayout title={'Inventory App'}>
       <Switch>
+        <Route path='/items/:itemId'>
+            <Item />
+        </Route>
         <Route path='/items'>
             <AllItems />
         </Route>
