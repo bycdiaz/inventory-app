@@ -68,11 +68,10 @@ function Item() {
       price,
       stock
     }
-    console.log(detailsToDisplay);
 
     return Object.keys(detailsToDisplay).map(detailName => {
       return (
-        <div className='item-detail' key={name}>
+        <div className='item-detail' key={detailName}>
           <p>{detailName.charAt(0).toUpperCase() + detailName.slice(1)}</p>
           <p>{detailsToDisplay[detailName]}</p>
         </div>
