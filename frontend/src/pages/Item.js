@@ -40,7 +40,8 @@ const ItemContainer = Styled.div`
 
 function Item() {
   const { itemId } = useParams();
-  const [item, setItemDetails] = useState([]);
+  const [ item, setItemDetails ] = useState([]);
+  const [ editMode, setEditMode ] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
@@ -69,17 +70,20 @@ function Item() {
       stock
     }
 
-    return Object.keys(detailsToDisplay).map(detailName => {
-      return (
-        <div className='item-detail' key={detailName}>
-          <p>{detailName.charAt(0).toUpperCase() + detailName.slice(1)}</p>
-          <p>{detailsToDisplay[detailName]}</p>
-        </div>
-      )
-    })
+    if (editMode) {
+      // TODO create edit form and insert here
+      return <p>Edit the details</p>
+    } else {
+      return Object.keys(detailsToDisplay).map(detailName => {
+        return (
+          <div className='item-detail' key={detailName}>
+            <p>{detailName.charAt(0).toUpperCase() + detailName.slice(1)}</p>
+            <p>{detailsToDisplay[detailName]}</p>
+          </div>
+        )
+      })
+    }
   }
-
-  ItemDetails()
 
   return (
     <ItemContainer>
@@ -87,7 +91,12 @@ function Item() {
       <div className='details'>
         <ItemDetails />
       </div>
-      <button className='edit-item'>Edit This Item</button>
+      <button
+        className='edit-item'
+        onClick={() => editMode ? setEditMode(false) : setEditMode(true)}
+      >
+        { editMode ? 'Done Editing' : 'Edit This Item' }
+      </button>
     </ItemContainer>
   )
 }
