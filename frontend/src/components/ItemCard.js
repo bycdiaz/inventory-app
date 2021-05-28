@@ -19,7 +19,7 @@ function ItemCard(props) {
     <ItemContent>
       <p>{ props.item.name }</p>
       <p>{ props.item.description }</p>
-      <Link to={`items/${props.item._id}`}>Click for Details or to Edit</Link>
+      <Link to={`/items/${props.item._id}`}>Click for Details or to Edit</Link>
     </ItemContent>
   )
 }
