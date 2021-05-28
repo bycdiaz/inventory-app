@@ -6,19 +6,12 @@ import Footer from "../components/Footer";
 const PageStyle = Styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
-
-  /* .header {
-    flex-grow: 1
-  }
 
   .content {
-    flex-grow: 2
-  }
-
-  .footer {
-    flex-grow: 1
-  } */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  } 
 `
 
 function PageWrapper(props) {
