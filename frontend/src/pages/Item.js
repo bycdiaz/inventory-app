@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from "react-router-dom";
-
+import { useParams, Link } from "react-router-dom";
 import Styled from "styled-components";
 
 const ItemContainer = Styled.div`
@@ -25,11 +24,6 @@ const ItemContainer = Styled.div`
     width: 80%;
   }
 
-  .edit-item {
-    padding: 10px 0px;
-    width: 40%;
-  }
-
   .item-detail {
     display: flex;
     flex-direction: row;
@@ -41,7 +35,6 @@ const ItemContainer = Styled.div`
 function Item() {
   const { itemId } = useParams();
   const [ item, setItemDetails ] = useState([]);
-  const [ editMode, setEditMode ] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
@@ -70,19 +63,14 @@ function Item() {
       stock
     }
 
-    if (editMode) {
-      // TODO create edit form and insert here
-      return <p>Edit the details</p>
-    } else {
-      return Object.keys(detailsToDisplay).map(detailName => {
-        return (
-          <div className='item-detail' key={detailName}>
-            <p>{detailName.charAt(0).toUpperCase() + detailName.slice(1)}</p>
-            <p>{detailsToDisplay[detailName]}</p>
-          </div>
-        )
-      })
-    }
+    return Object.keys(detailsToDisplay).map(detailName => {
+      return (
+        <div className='item-detail' key={detailName}>
+          <p>{detailName.charAt(0).toUpperCase() + detailName.slice(1)}</p>
+          <p>{detailsToDisplay[detailName]}</p>
+        </div>
+      )
+    })
   }
 
   return (
@@ -91,12 +79,10 @@ function Item() {
       <div className='details'>
         <ItemDetails />
       </div>
-      <button
-        className='edit-item'
-        onClick={() => editMode ? setEditMode(false) : setEditMode(true)}
-      >
-        { editMode ? 'Done Editing' : 'Edit This Item' }
-      </button>
+      <Link to={`/items/${itemId}/edit`}>
+        <button>Edit This Item</button>
+      </Link>
+      
     </ItemContainer>
   )
 }
