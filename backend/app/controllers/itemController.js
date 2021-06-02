@@ -24,3 +24,19 @@ exports.byId = async (req, res, next) => {
     next(error);
   }
 }
+
+exports.updateItem = async (req, res, next) => {
+  const updates = req.body;
+  const { _id } = req.params;
+
+  try {
+    await Item.updateOne({ _id }, updates);
+
+    res.send({
+      request: updates,
+      status: 'sucess'
+    }).status(200);
+  } catch (error) {
+    next(error);
+  }
+}
