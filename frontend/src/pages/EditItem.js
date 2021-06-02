@@ -16,7 +16,7 @@ const EditItemContainer = Styled.div`
   padding: 20px;
 `
 
-function EditItem(props) {
+function EditItem() {
   const { itemId } = useParams();
   const [ item, setItem ] = useState([]);
 
