@@ -12,6 +12,7 @@ const ItemContainer = Styled.div`
   width: 60%;
   margin-top: 30px;
   padding: 20px;
+  border-radius: 10px;
 
   .page-title {
     font-size: 18pt;
