@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import Styled from "styled-components";
 
-import ItemForm from '../components/ItemForm';
+import ItemForm from '../components/item-form/ItemForm';
 
 const EditItemContainer = Styled.div`
   display: flex;
