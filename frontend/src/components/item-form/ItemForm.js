@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Styled from 'styled-components';
+
+import CategorySelection from '../item-form/CategorySelection';
 
 const Form = Styled.form`
   display: flex;
@@ -29,6 +31,24 @@ const Form = Styled.form`
 function ItemForm(props) {
   const [ formState, setFormState ] = useState({});
   const [saveSuccessful, setSaveSuccessful] = useState(null);
+  const [categories, setCategories] = useState([]);
+  
+  async function getCategories() {
+    const response = await fetch("http://localhost:3000/categories");
+    const categories = await response.json();
+
+    return setCategories(categories);;
+  }
+
+  useEffect(() => {
+    let isMounted = true;
+
+    if (isMounted) getCategories();
+
+    return () => {
+      isMounted = false;
+    }
+  }, []);
 
   function handleChange(event) {
     setFormState(previousState => ({
@@ -81,6 +101,11 @@ function ItemForm(props) {
         defaultValue={props.item.name}
         onChange={handleChange}
       ></input>
+      <CategorySelection
+        categoryName={props.item.categoryName}
+        categories={categories}
+        handleChange={handleChange}
+      />
       <input type='submit' value='Save Changes'></input>
       <SaveResult />
     </Form>
