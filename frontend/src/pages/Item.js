@@ -57,9 +57,9 @@ function Item() {
   function ItemDetails() {
     const { categoryName, description, name, price, stock } = item;
     const detailsToDisplay = {
+      name,
       category: categoryName,
       description,
-      name,
       price,
       stock
     }
