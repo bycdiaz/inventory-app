@@ -112,6 +112,16 @@ function ItemForm(props) {
         defaultValue={props.item.description}
         onChange={handleChange}
       ></textarea>
+      <label htmlFor='price'>Item Price:</label>
+      <input
+        type="number"
+        name="price"
+        min="1"
+        defaultValue={props.item.price}
+        step="0.01"
+        onChange={handleChange}
+      ></input>
+
       <input type='submit' value='Save Changes'></input>
       <SaveResult />
     </Form>
