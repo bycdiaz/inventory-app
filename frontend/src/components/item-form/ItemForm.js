@@ -106,6 +106,12 @@ function ItemForm(props) {
         categories={categories}
         handleChange={handleChange}
       />
+      <label htmlFor='description'>Item Description:</label>
+      <textarea
+        name='description'
+        defaultValue={props.item.description}
+        onChange={handleChange}
+      ></textarea>
       <input type='submit' value='Save Changes'></input>
       <SaveResult />
     </Form>
