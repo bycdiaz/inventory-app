@@ -94,7 +94,7 @@ function ItemForm(props) {
 
   return (
     <Form onSubmit={handleSubmit} autocomplete="off">
-      <label htmlFor='name'>Item Name:</label>
+      <label htmlFor='name'>Name:</label>
       <input
         type='text'
         name='name'
@@ -106,13 +106,13 @@ function ItemForm(props) {
         categories={categories}
         handleChange={handleChange}
       />
-      <label htmlFor='description'>Item Description:</label>
+      <label htmlFor='description'>Description:</label>
       <textarea
         name='description'
         defaultValue={props.item.description}
         onChange={handleChange}
       ></textarea>
-      <label htmlFor='price'>Item Price:</label>
+      <label htmlFor='price'>Price:</label>
       <input
         type="number"
         name="price"
@@ -121,7 +121,13 @@ function ItemForm(props) {
         step="0.01"
         onChange={handleChange}
       ></input>
-
+      <label htmlFor='stock'>Stock:</label>
+      <input
+        type="number"
+        name="stock"
+        defaultValue={props.item.stock}
+        onChange={handleChange}
+      ></input>
       <input type='submit' value='Save Changes'></input>
       <SaveResult />
     </Form>
