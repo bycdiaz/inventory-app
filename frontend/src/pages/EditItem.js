@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Styled from "styled-components";
 
 import ItemForm from '../components/item-form/ItemForm';
+import DeleteButton from '../components/DeleteButton';
 
 const EditItemContainer = Styled.div`
   display: flex;
@@ -41,6 +42,7 @@ function EditItem() {
   return (
     <EditItemContainer>
       <ItemForm item={item} />
+      <DeleteButton />
     </EditItemContainer>
   )
 }
