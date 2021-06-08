@@ -25,6 +25,18 @@ exports.byId = async (req, res, next) => {
   }
 }
 
+exports.deleteItem = async (req, res, next) => {
+  const { _id } = req.params;
+
+  try {
+    await Item.deleteOne({ _id });
+
+    res.send('Item Deleted').status(200);
+  } catch (error) {
+    next(error);
+  }
+}
+
 exports.updateItem = async (req, res, next) => {
   const updates = req.body;
   const { _id } = req.params;
