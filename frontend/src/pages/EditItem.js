@@ -42,7 +42,7 @@ function EditItem() {
   return (
     <EditItemContainer>
       <ItemForm item={item} />
-      <DeleteButton />
+      <DeleteButton itemId={item._id} />
     </EditItemContainer>
   )
 }
