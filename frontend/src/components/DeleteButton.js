@@ -18,7 +18,7 @@ function DeleteButton(props) {
     const requestOptions = { method: 'DELETE' };
 
     try {
-      const response = await fetch(`http://localhost:3000/items/delete/${props.item._id}`, requestOptions);
+      const response = await fetch(`http://localhost:3000/items/delete/${props.itemId}`, requestOptions);
 
       if (response.status === 200) {
         setDeleteSuccess(true);
