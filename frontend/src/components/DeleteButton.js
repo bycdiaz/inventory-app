@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import  { Redirect } from 'react-router-dom'
 import Styled from "styled-components";
 
 const Button = Styled.button`
@@ -8,26 +9,53 @@ const Button = Styled.button`
   padding: 5px 10px;
 `
 
-function DeleteButton() {
+function DeleteButton(props) {
   const [clickCount, setClickCount] = useState(0);
+  const [deleteSuccess, setDeleteSuccess] = useState(false);
+  const [deleteFailed, setDeleteFailed] = useState(false);
+
+  async function attemptDelete() {
+    const requestOptions = { method: 'DELETE' };
+
+    try {
+      const response = await fetch(`http://localhost:3000/items/delete/${props.item._id}`, requestOptions);
+
+      if (response.status === 200) {
+        setDeleteSuccess(true);
+      } else {
+        setDeleteFailed(true);
+        setClickCount(0);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   function handleClick() {
-    // disable button after delete request is sent.
     if (clickCount === 0) {
       const newCount = clickCount + 1;
       setClickCount(newCount);
     } else if (clickCount === 1) {
-      console.log('api call for deleting just fired');
+      attemptDelete();
       const newCount = clickCount + 1;
       setClickCount(newCount);
     }  
   }
 
   return (
-      <Button onClick={handleClick} disabled={clickCount === 2}>
-        {clickCount === 0 ? 'Delete Item?' : 'Confirm Delete'}
-      </Button>
-      // TODO show delete success or failure
+      <>
+        <Button onClick={handleClick} disabled={clickCount === 2}>
+          {clickCount === 0 ? 'Delete Item?' : 'Confirm Delete'}
+        </Button>
+        {deleteFailed && <p>Something went wrong. Delete Failed.</p>}
+        { deleteSuccess && 
+          <Redirect to={{
+              pathname: '/',
+              state: { deleteSuccess: true }
+            }} 
+          />
+        }
+      </>
   )
 }
 
