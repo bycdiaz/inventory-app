@@ -1,6 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import Styled from "styled-components";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Styled from 'styled-components';
 
 const NavElement = Styled.nav`
   display: flex;
@@ -16,13 +16,15 @@ function Nav() {
     <NavElement>
       <div>
         <button>Create Category</button>
+      <Link to='/createitem'>
         <button>Create Item</button>
+      </Link>
       </div>
       <div>
-      <Link to="/categories">
+      <Link to='/categories'>
         <button>All Categories</button>   
       </Link>
-      <Link to="/items">
+      <Link to='/items'>
         <button>All Items</button>
       </Link>
       </div>
