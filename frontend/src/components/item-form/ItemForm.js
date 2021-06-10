@@ -29,7 +29,7 @@ const Form = Styled.form`
 `
 
 function ItemForm(props) {
-  const [ formState, setFormState ] = useState({});
+  const [formState, setFormState] = useState({});
   const [saveSuccessful, setSaveSuccessful] = useState(null);
   const [categories, setCategories] = useState([]);
   
@@ -37,7 +37,7 @@ function ItemForm(props) {
     const response = await fetch("http://localhost:3000/categories");
     const categories = await response.json();
 
-    return setCategories(categories);;
+    return setCategories(categories);
   }
 
   useEffect(() => {
@@ -74,7 +74,9 @@ function ItemForm(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    sendUpdates();
+    if (props) {
+      sendUpdates();
+    }
   }
 
   function SaveResult() {
@@ -100,6 +102,7 @@ function ItemForm(props) {
         name='name'
         defaultValue={props.item.name}
         onChange={handleChange}
+        required
       ></input>
       <CategorySelection
         categoryName={props.item.categoryName}
@@ -111,6 +114,7 @@ function ItemForm(props) {
         name='description'
         defaultValue={props.item.description}
         onChange={handleChange}
+        required
       ></textarea>
       <label htmlFor='price'>Price:</label>
       <input
@@ -120,6 +124,7 @@ function ItemForm(props) {
         defaultValue={props.item.price}
         step="0.01"
         onChange={handleChange}
+        required
       ></input>
       <label htmlFor='stock'>Stock:</label>
       <input
@@ -127,6 +132,7 @@ function ItemForm(props) {
         name="stock"
         defaultValue={props.item.stock}
         onChange={handleChange}
+        required
       ></input>
       <input type='submit' value='Save Changes'></input>
       <SaveResult />
