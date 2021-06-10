@@ -7,12 +7,16 @@ import Categories from './pages/Categories';
 import CategoryItems from './pages/CategoryItems';
 import AllItems from './pages/AllItems';
 import Item from './pages/Item';
+import CreateItem from './pages/CreateItem';
 import EditItem from './pages/EditItem';
 
 function App() {
   return (
     <StandardLayout title={'Inventory App'}>
       <Switch>
+        <Route path='/createitem'>
+            <CreateItem />
+        </Route>
         <Route path='/items/:itemId/edit'>
             <EditItem />
         </Route>
