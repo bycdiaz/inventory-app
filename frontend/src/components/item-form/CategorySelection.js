@@ -7,8 +7,8 @@ function CategorySelection(props) {
     <>
       <p>Current Category - {props.categoryName}</p>
       <label htmlFor='category'>New Category:</label>
-      <select name='category' onChange={props.handleChange} defaultValue='-- select an option --'>
-      <option disabled> -- select an option -- </option>
+      <select name='category' onChange={props.handleChange} required>
+      <option value=""> -- select an option -- </option>
         {filteredCategories.map(category => {
           return (
             <option
