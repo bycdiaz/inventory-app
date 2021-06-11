@@ -73,12 +73,30 @@ function ItemForm(props) {
     }
   }
 
+  async function createItem() {
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formState)
+  };
+
+    try {
+      await fetch(`http://localhost:3000/items/create`, requestOptions);
+      setSaveSuccessful(true);
+    } catch (error) {
+      setSaveSuccessful(false);
+    }
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
-    if (props) {
+    const editExistingItem = props._id;
+
+    if (editExistingItem) {
       sendUpdates();
+    } else {
+      createItem();
     }
-    // TODO add logic for saving a new item.
   }
 
   function SaveResult() {
