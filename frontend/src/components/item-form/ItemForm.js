@@ -57,9 +57,10 @@ function ItemForm(props) {
     }))
   }
 
+  // WISHLIST Extract this logic to EditItem.js to make ItemForm more modular.
   async function sendUpdates() {
     const requestOptions = {
-      method: 'POST',
+      method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formState)
   };
@@ -77,6 +78,7 @@ function ItemForm(props) {
     if (props) {
       sendUpdates();
     }
+    // TODO add logic for saving a new item.
   }
 
   function SaveResult() {
