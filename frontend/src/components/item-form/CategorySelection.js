@@ -2,12 +2,16 @@ import React from 'react';
 
 function CategorySelection(props) {
   const filteredCategories = props.categories.filter(category => category.name !== props.categoryName);
-
+  console.log(filteredCategories);
   return (
     <>
       <p>Current Category - {props.categoryName}</p>
       <label htmlFor='category'>New Category:</label>
-      <select name='category' onChange={props.handleChange} required>
+      <select
+        name='category'
+        onChange={props.handleChange}
+        required={props.categories.length === filteredCategories.length}
+      >
       <option value=""> -- select an option -- </option>
         {filteredCategories.map(category => {
           return (
