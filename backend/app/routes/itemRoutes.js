@@ -6,6 +6,8 @@ const item = require('../controllers/itemController');
 router.get('/:id', item.byId);
 router.get('/', item.allItems);
 
+router.post('/create', item.createItem);
+
 router.put('/update/:_id', item.updateItem);
 
 router.delete('/delete/:_id', item.deleteItem);

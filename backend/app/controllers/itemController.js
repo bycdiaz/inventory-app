@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { create } = require('../models/ItemModel');
 const Item = mongoose.model("Item");
 
 exports.allItems = async (req, res, next) => {
@@ -20,6 +21,19 @@ exports.byId = async (req, res, next) => {
     item.categoryName = categoryName
 
     return res.json(item);
+  } catch (error) {
+    next(error);
+  }
+}
+
+exports.createItem = async (req, res, next) => {
+  const newItem = req.body;
+
+  try {
+    const createdItem = await Item.create(newItem);
+    await createdItem.save();
+
+    res.send(createdItem);
   } catch (error) {
     next(error);
   }
