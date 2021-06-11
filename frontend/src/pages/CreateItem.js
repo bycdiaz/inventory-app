@@ -15,6 +15,7 @@ function CreateItem() {
     price: 0,
     stock: 0
   }
+
   return (
     <CreateItemContainer>
       <ItemForm item={newItem} />

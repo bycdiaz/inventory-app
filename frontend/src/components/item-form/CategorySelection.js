@@ -2,7 +2,7 @@ import React from 'react';
 
 function CategorySelection(props) {
   const filteredCategories = props.categories.filter(category => category.name !== props.categoryName);
-  console.log(filteredCategories);
+
   return (
     <>
       <p>Current Category - {props.categoryName}</p>
