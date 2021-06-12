@@ -90,7 +90,7 @@ function ItemForm(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    const editExistingItem = props._id;
+    const editExistingItem = props.item._id;
 
     if (editExistingItem) {
       sendUpdates();
