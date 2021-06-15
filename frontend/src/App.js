@@ -9,6 +9,7 @@ import AllItems from './pages/AllItems';
 import Item from './pages/Item';
 import CreateItem from './pages/CreateItem';
 import EditItem from './pages/EditItem';
+import EditCategory from './pages/EditCategory';
 
 function App() {
   return (
@@ -25,6 +26,9 @@ function App() {
         </Route>
         <Route path='/items'>
             <AllItems />
+        </Route>
+        <Route path='/categories/:category/edit'>
+          <EditCategory />
         </Route>
         <Route path='/categories/:category'>
           <CategoryItems />
