@@ -5,7 +5,9 @@ const Item = mongoose.model("Item");
 exports.allItems = async (req, res, next) => {
   try {
     const items = await Item.find();
-    return res.json(items);
+    const byNameAscending = (a, b) => a.name[0].localeCompare(b.name[0]);
+    const sortedItems = items.sort(byNameAscending);
+    return res.json(sortedItems);
   } catch (error) {
     next(error);
   }
