@@ -3,7 +3,8 @@ import Styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const CategoryContainer = Styled.div`
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  border: 2px solid black;
+  /* box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   width: 40%;
 
@@ -17,19 +18,31 @@ const CategoryContainer = Styled.div`
 
   .name {
     font-weight: bold;
-  }
+  } */
 `
 
 function Category(props) {
   return (
-    <Link to={`/categories/${props.name.toLowerCase()}`}>
-      <CategoryContainer >
-        <div className="info">
+    <CategoryContainer >
+      <div className="info">
+        <Link to={`/categories/${props.name.toLowerCase()}`}>
           <p className="name">{props.name}</p>
-          <p>{props.description}</p> 
-        </div>
-      </CategoryContainer>        
-    </Link>
+        </Link>
+        <p>{props.description}</p> 
+      </div>
+      <Link
+        to={{
+          pathname: `/categories/${props.id}/edit`,
+          state: {
+            categoryId: props.id,
+            name: props.name,
+            description: props.description
+          }
+        }}
+      >
+        <button>Edit Category</button>
+      </Link>
+    </CategoryContainer>  
   )
 }
 
