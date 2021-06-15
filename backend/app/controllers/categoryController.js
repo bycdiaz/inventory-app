@@ -26,3 +26,20 @@ exports.itemsByCategory = async (req, res, next) => {
     next(error);
   }
 }
+
+exports.updateCategory = async (req, res, next) => {
+  const updates = req.body;
+  const categoryId = req.params.category;
+
+  try {
+
+    await Category.updateOne({ _id: categoryId }, updates);
+
+    res.send({
+      request: updates,
+      status: 'sucess'
+    }).status(200);
+  } catch (error) {
+    next(error);
+  }
+}
