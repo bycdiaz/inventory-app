@@ -9,9 +9,9 @@ const CategoriesContent = Styled.div`
   align-items: center;
 
   .container {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
+    /* display: flex; */
+    /* flex-flow: row wrap; */
+    /* justify-content: space-around; */
   }
 `
 
@@ -22,7 +22,7 @@ function Categories() {
     const response = await fetch("http://localhost:3000/categories");
     const categories = await response.json();
 
-    return setCategories(categories);;
+    return setCategories(categories);
   }
 
     useEffect(() => {
@@ -42,7 +42,7 @@ function Categories() {
         categories.map(({ _id, name, description }) => {
           return (
             <li key={_id}>
-              <Category name={name} description={description} />
+              <Category name={name} description={description} id={_id} />
             </li>
           )
           })
