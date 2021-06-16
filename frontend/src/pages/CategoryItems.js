@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Styled from 'styled-components';
-import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 import ItemCard from '../components/ItemCard';
 
@@ -12,16 +12,17 @@ const ItemsContent = Styled.div`
 `
 
 function CategoryItems() {
-  const { category } = useParams();
+  const { state } = useLocation();
   const [items, setItems] = useState([]);
 
   useEffect(() => {
     let isMounted = true;
-    
+
     async function getItemsByCategory() {
-      const response = await fetch(`http://localhost:3000/categories/${category}`);
+      const url = `http://localhost:3000/categories/${state.category.name}/?id=${state.category.id}`;
+      const response = await fetch(url);
       const items = await response.json();
-  
+
       return setItems(items);
     }
 
@@ -30,7 +31,7 @@ function CategoryItems() {
     return () => {
       isMounted = false;
     }
-  },[category]);
+  },[state.category]);
 
   function Items() {
     return (
