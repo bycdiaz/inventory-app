@@ -25,7 +25,10 @@ function Category(props) {
   return (
     <CategoryContainer >
       <div className="info">
-        <Link to={`/categories/${props.name.toLowerCase()}`}>
+        <Link to={{
+          pathname: `/categories/${props.name.toLowerCase()}`,
+          state: { category: props}
+        }}>
           <p className="name">{props.name}</p>
         </Link>
         <p>{props.description}</p> 
