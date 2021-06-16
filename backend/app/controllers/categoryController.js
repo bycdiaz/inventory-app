@@ -15,11 +15,10 @@ exports.getCategories = async (req, res, next) => {
 }
 
 exports.itemsByCategory = async (req, res, next) => {
-  const categoryRequested = req.params.category.replace(/^\w/, (c) => c.toUpperCase());
+  const categoryId = req.query.id;
 
   try {
-    const { _id } = await Category.findOne({ name: categoryRequested });
-    const itemsByCategory = await Item.find({ category: _id });
+    const itemsByCategory = await Item.find({ category: categoryId });
   
     return res.json(itemsByCategory);
   } catch (error) {
