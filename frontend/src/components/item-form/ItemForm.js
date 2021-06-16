@@ -123,6 +123,7 @@ function ItemForm(props) {
         defaultValue={props.item.name}
         onChange={handleChange}
         required
+        autoFocus
       ></input>
       <CategorySelection
         categoryName={props.item.categoryName}

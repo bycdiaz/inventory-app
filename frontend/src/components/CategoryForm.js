@@ -58,20 +58,20 @@ function CategoryForm(props) {
     }
   }
 
-  // async function createItem() {
-  //   const requestOptions = {
-  //     method: 'POST',
-  //     headers: { 'Content-Type': 'application/json' },
-  //     body: JSON.stringify(formState)
-  // };
+  async function createItem() {
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formState)
+  };
 
-  //   try {
-  //     await fetch(`http://localhost:3000/items/create`, requestOptions);
-  //     setSaveSuccessful(true);
-  //   } catch (error) {
-  //     setSaveSuccessful(false);
-  //   }
-  // }
+    try {
+      await fetch(`http://localhost:3000/items/create`, requestOptions);
+      setSaveSuccessful(true);
+    } catch (error) {
+      setSaveSuccessful(false);
+    }
+  }
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -79,9 +79,9 @@ function CategoryForm(props) {
 
     if (editExistingCategory) {
       sendUpdates();
+    } else {
+      createItem();
     }
-    //else {
-    //   createItem();
   }
 
 
@@ -109,6 +109,7 @@ function CategoryForm(props) {
         defaultValue={props.category.name}
         onChange={handleChange}
         required
+        autoFocus
       ></input>
 
       <label htmlFor='description'>Description:</label>
